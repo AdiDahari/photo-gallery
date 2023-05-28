@@ -1,13 +1,22 @@
-const express = require("express");
-const cors = require("cors");
-const { photosRouter } = require("./routes/photos");
+// Required modules
+const express = require("express"); // Express framework for creating the server
+require("dotenv").config(); // Loads environment variables from a .env file
+const cors = require("cors"); // Cross-origin resource sharing middleware
+const { photosRouter } = require("./routes/photos"); // Router for handling photo-related routes
 
+// Create an Express application
 const app = express();
 
+// Enable CORS
 app.use(cors());
 
+// Use the "photos" router for handling routes starting with "/api/photos"
 app.use("/api/photos", photosRouter);
 
-app.listen(4000, () => {
-  console.log("server listening on port 4000");
+// Setting server port
+const PORT = process.env.PORT || 4000;
+
+// Start the server
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
