@@ -1,14 +1,26 @@
-import React, { Fragment, useEffect, useRef, useState } from "react";
+/**
+ * The modal component.
+ * @module Modal
+ *
+ * @author Adi Dahari
+ */
+
+import React, { Fragment, useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Dialog, Transition } from "@headlessui/react";
-import { closeModal } from "../../features/modal/modalSlice";
-import Search from "../Search";
+import { closeModal } from "../../../features/modal/modalSlice";
+import Search from "./Search";
+import Details from "./Details";
 
+/**
+ * The modal component.
+ * Renders a modal dialog with dynamic content based on the Redux store state.
+ * @returns {JSX.Element} The rendered JSX elements.
+ */
 const Modal = () => {
   const { isOpen, content } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
-  useEffect(() => {}, [isOpen]);
 
   const cancelBtnRef = useRef(null);
 
@@ -46,16 +58,12 @@ const Modal = () => {
                     <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                       <Dialog.Title
                         as="h3"
-                        className="text-center font-semibold leading-6 text-gray-900"
+                        className="text-base font-semibold leading-6 text-gray-900"
                       >
-                        {!content ? (
+                        {content === "search" ? (
                           <Search />
                         ) : (
-                          <ul>
-                            {Object.keys(content).map((prop) => (
-                              <li key={prop}>{content[prop]}</li>
-                            ))}
-                          </ul>
+                          content && <Details content={content} />
                         )}
                       </Dialog.Title>
                     </div>
