@@ -54,8 +54,11 @@ const Button = ({ title, onClick, outlined, disabled }) => {
         : "border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white"
     }`;
   } else {
-    classes +=
-      " bg-blue-500 text-white hover:bg-white hover:border-blue-500 hover:text-blue-500";
+    classes += ` ${
+      disabled
+        ? "bg-gray-500 opacity-50 text-white"
+        : " bg-blue-500 text-white hover:bg-white hover:border-blue-500 hover:text-blue-500"
+    }`;
   }
 
   return (

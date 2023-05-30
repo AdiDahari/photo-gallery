@@ -48,10 +48,14 @@ const Navbar = () => {
       <Button
         title="prev"
         outlined
-        disabled={page === 1}
+        disabled={page === 1 || !process.env.REACT_APP_API_URL}
         onClick={onPrevPage}
       />
-      <Button title="search" onClick={() => dispatch(openModal("search"))} />
+      <Button
+        title="search"
+        disabled={!process.env.REACT_APP_API_URL}
+        onClick={() => dispatch(openModal("search"))}
+      />
       <Button
         title="next"
         outlined

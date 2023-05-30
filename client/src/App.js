@@ -5,12 +5,13 @@
  * @author Adi Dahari
  */
 
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import Grid from "./components/grid/Grid";
 import Modal from "./components/layout/modal/Modal";
 import Navbar from "./components/layout/Navbar";
 
 import "react-toastify/dist/ReactToastify.min.css";
+import { useEffect } from "react";
 
 /**
  * The main application component.
@@ -24,12 +25,23 @@ import "react-toastify/dist/ReactToastify.min.css";
  * ReactDOM.render(<App />, document.getElementById("root"));
  */
 function App() {
+  useEffect(() => {
+    if (!process.env.REACT_APP_API_URL) {
+      toast.error(
+        "Required environment variables is missing. Please contact administration",
+        {
+          position: "top-center",
+        }
+      );
+      toast.clearWaitingQueue();
+    }
+  });
   return (
     <div className="App">
       <Modal />
       <Navbar />
       <Grid />
-      <ToastContainer />
+      <ToastContainer limit={1} />
     </div>
   );
 }
