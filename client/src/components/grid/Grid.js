@@ -60,6 +60,8 @@ const Grid = () => {
           toast.error(`Server Error: ${error.message}`, {
             position: "top-right",
           });
+
+          toast.clearWaitingQueue();
         }
 
         setIsLoading(false);
