@@ -14,7 +14,7 @@ This project is a simple Express server for handling photo-related routes. It in
 
 ## Getting Started
 
-To run the project, make sure you have Node.js installed. Install the project dependencies by running `npm install` in the project's root directory. Once the dependencies are installed, you can start the server by running `node server.js`. The server will start on port 4000, and you can access the photo-related routes at `http://localhost:<PORT | 4000>/api/photos`.
+To run the project, make sure you have Node.js installed. Install the project dependencies by running `npm install` in the project's root directory. Once the dependencies are installed, you can start the server by running `node index.js`. The server will start on port 4000, and you can access the photo-related routes at `http://localhost:<PORT | 4000>/api/photos`.
 
 ## Customization
 

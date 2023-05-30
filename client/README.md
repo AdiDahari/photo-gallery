@@ -19,7 +19,7 @@ This is a web application that allows users to browse and search for photos base
 ## Installation
 
 1. Clone the repository: `git clone https://github.com/your-username/photo-gallery.git`
-2. Navigate to the project directory: `cd photo-gallery`
+2. Navigate to the project directory: `cd photo-gallery/client`
 3. Install dependencies: `npm install`
 
 ## Usage
