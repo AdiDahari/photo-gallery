@@ -1,6 +1,13 @@
 /**
  * The navigation bar component.
+ *
  * @module Navbar
+ * @component
+ *
+ * @example
+ * <Navbar />
+ *
+ * @returns {JSX.Element} The rendered JSX elements.
  *
  * @author Adi Dahari
  */
@@ -13,7 +20,7 @@ import { nextPage, prevPage } from "../../features/photos/photosSlice";
 
 /**
  * The navigation bar component.
- * Renders the navigation buttons and handles their click events.
+ *
  * @returns {JSX.Element} The rendered JSX elements.
  */
 const Navbar = () => {
@@ -37,7 +44,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="max-w-screen py-3 px-2 flex flex-row justify-between">
+    <nav className="bg-white bg-opacity-80 fixed top-0 left-0 right-0 z-50 max-w-screen py-1 px-2 flex flex-row justify-between">
       <Button
         title="prev"
         outlined

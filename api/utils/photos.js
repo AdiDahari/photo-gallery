@@ -5,7 +5,7 @@
  */
 const resolveDate = (previewURL) => {
   const splittedDateString = previewURL.split("/").slice(4, 7);
-  return new Date(splittedDateString);
+  return new Date(splittedDateString).toLocaleString();
 };
 
 /**

@@ -1,6 +1,18 @@
 /**
  * Redux slice for managing modal state.
+ *
  * @module modalSlice
+ * @slice
+ * @reducer openModal - Opens the modal with the provided content.
+ * @reducer closeModal - Closes the modal.
+ *
+ * @example
+ * import { openModal, closeModal } from "./modalSlice";
+ *
+ * dispatch(openModal(content));
+ * dispatch(closeModal());
+ *
+ * @returns {Object} The modal slice.
  *
  * @author Adi Dahari
  */

@@ -1,6 +1,22 @@
 /**
  * Redux slice for managing photos state.
+ *
  * @module photosSlice
+ * @slice
+ * @reducer setCategory - Sets the category and resets the page number.
+ * @reducer setLastPage - Sets the last available page number.
+ * @reducer nextPage - Increments the page number by 1.
+ * @reducer prevPage - Decrements the page number by 1.
+ *
+ * @example
+ * import { setCategory, nextPage, prevPage, setLastPage } from "./photosSlice";
+ *
+ * dispatch(setCategory(category));
+ * dispatch(nextPage());
+ * dispatch(prevPage());
+ * dispatch(setLastPage(lastPage));
+ *
+ * @returns {Object} The photos slice.
  *
  * @author Adi Dahari
  */
@@ -12,11 +28,13 @@ import { createSlice } from "@reduxjs/toolkit";
  * @type {Object}
  * @property {string} category - The category of the photos.
  * @property {number} page - The current page number.
- * @property {number} perPage - The number of photos per page.
+ * @property {number} perPage - The number of photos per page./**
+ * Redux slice for managing photos state.
+ * @module photosSlice
  * @property {number} lastPage - The last available page number.
  */
 const initialState = {
-  category: "",
+  category: "flowers",
   page: 1,
   perPage: 9,
   lastPage: 1,

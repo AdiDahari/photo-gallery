@@ -1,6 +1,11 @@
 /**
  * The search component.
+ * Renders a search input form and handles form submission.
+ *
  * @module Search
+ * @component
+ *
+ * @returns {JSX.Element} The rendered JSX elements.
  *
  * @author Adi Dahari
  */
@@ -9,10 +14,12 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { closeModal } from "../../../features/modal/modalSlice";
 import { setCategory } from "../../../features/photos/photosSlice";
+import { toast } from "react-toastify";
 
 /**
  * The search component.
  * Renders a search input form and handles form submission.
+ *
  * @returns {JSX.Element} The rendered JSX elements.
  */
 const Search = () => {
@@ -23,10 +30,16 @@ const Search = () => {
    * Handles the form submission.
    * Dispatches the setCategory and closeModal actions.
    * Resets the query state to an empty string.
+   *
    * @param {Object} e - The form submit event.
    */
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!query) {
+      return toast.error("Please provide a search category.", {
+        position: "top-right",
+      });
+    }
     dispatch(setCategory(query));
     dispatch(closeModal());
     setQuery("");
@@ -39,7 +52,7 @@ const Search = () => {
         <input
           type="text"
           className="block w-full rounded-md border-0 py-1.5 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-          placeholder="Sports, Skies, Flowers, etc..."
+          placeholder="e.g. Flowers"
           onChange={(e) => setQuery(e.target.value)}
         />
       </div>

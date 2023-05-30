@@ -1,6 +1,11 @@
 /**
  * The modal component.
+ * Renders a modal dialog with dynamic content based on the Redux store state.
+ *
  * @module Modal
+ * @component
+ *
+ * @returns {JSX.Element} The rendered JSX elements.
  *
  * @author Adi Dahari
  */
@@ -16,6 +21,7 @@ import Details from "./Details";
 /**
  * The modal component.
  * Renders a modal dialog with dynamic content based on the Redux store state.
+ *
  * @returns {JSX.Element} The rendered JSX elements.
  */
 const Modal = () => {
@@ -41,7 +47,7 @@ const Modal = () => {
         >
           <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         </Transition.Child>
-        <div className="fixed inset-0 z-10 overflow-y-auto">
+        <div className="fixed inset-0 z-10 mt-16 overflow-y-auto">
           <div className="flex min-h-full items-start justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
               as={Fragment}

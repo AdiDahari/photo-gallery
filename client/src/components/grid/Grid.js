@@ -1,6 +1,15 @@
 /**
  * The Grid component.
+ * Renders a grid of photos based on the selected category.
+ *
  * @module Grid
+ * @component
+ * @example
+ * return (
+ *   <Grid />
+ * )
+ *
+ * @returns {JSX.Element} The rendered JSX elements.
  *
  * @author Adi Dahari
  */
@@ -10,10 +19,12 @@ import GridItem from "./GridItem";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPhotos } from "../../utils/api";
 import { setLastPage } from "../../features/photos/photosSlice";
+import { toast } from "react-toastify";
 
 /**
  * The Grid component.
  * Renders a grid of photos based on the selected category.
+ *
  * @returns {JSX.Element} The rendered JSX elements.
  */
 const Grid = () => {
@@ -27,15 +38,29 @@ const Grid = () => {
     /**
      * Fetches photos from the API based on the selected category, page, and perPage.
      * Updates the loadedPhotos state and dispatches the setLastPage action.
+     *
+     * @async
+     * @function fetchData
      */
     const fetchData = async () => {
       if (category) {
         setIsLoading(true);
-        const { photos, lastPage } = await fetchPhotos(category, page, perPage);
 
-        dispatch(setLastPage(lastPage));
+        try {
+          const { photos, lastPage } = await fetchPhotos(
+            category,
+            page,
+            perPage
+          );
 
-        setLoadedPhotos(photos);
+          dispatch(setLastPage(lastPage));
+
+          setLoadedPhotos(photos);
+        } catch (error) {
+          toast.error(`Server Error: ${error.message}`, {
+            position: "top-right",
+          });
+        }
 
         setIsLoading(false);
       }
@@ -46,13 +71,19 @@ const Grid = () => {
 
   /**
    * The content to render based on the loadedPhotos and isLoading state.
+   *
+   * @constant
+   * @name content
+   * @type {JSX.Element}
    */
   const content = loadedPhotos.length ? (
-    <div className="flex justify-center items-center">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-        {loadedPhotos.map((photo) => (
-          <GridItem key={photo.id} {...photo} />
-        ))}
+    <div className="h-full">
+      <div className="flex mt-16 pb-4 justify-center items-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          {loadedPhotos.map((photo) => (
+            <GridItem key={photo.id} {...photo} />
+          ))}
+        </div>
       </div>
     </div>
   ) : (
