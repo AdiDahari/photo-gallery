@@ -20,11 +20,14 @@ This is a web application that allows users to browse and search for photos base
 1. Clone the repository: `git clone https://github.com/your-username/photo-gallery.git`
 2. Navigate to the project directory: `cd photo-gallery/client`
 3. Install dependencies: `npm install`
+4. Create environment file `.env.local` at the main client directory with the following field:
+   - `REACT_APP_API_URL`: URL path to the backend server.
 
 ## Usage
 
-1. Start the development server: `npm start`
-2. Open your web browser and visit `http://localhost:3000`
+1. make sure the backend server is running
+2. Start the development server: `npm start`
+3. Open your web browser and visit `http://localhost:3000`
 
 ## Contributing
 
