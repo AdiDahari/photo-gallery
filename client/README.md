@@ -12,7 +12,6 @@ This is a web application that allows users to browse and search for photos base
 
 - React.js
 - Redux for state management
-- React Router for routing
 - Tailwind CSS for styling
 - Redux Toolkit for Redux simplifications
 
