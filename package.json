@@ -6,7 +6,10 @@
   "scripts": {
     "start": "npm-run-all --parallel start-api start-client",
     "start-api": "cd api && npm start",
-    "start-client": "cd client && npm start"
+    "start-client": "cd client && npm start",
+    "install:api": "cd api && npm install",
+    "install:client": "cd client && npm install",
+    "install:all": "npm-run-all install:api install:client"
   },
   "keywords": [],
   "author": "",
